@@ -3,7 +3,8 @@ package com.application.jpa.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by jonas on 2017-06-12.
@@ -18,7 +19,5 @@ public class League {
     private Integer currentSeasonId;
     @JsonProperty
     private String name;
-    @JsonProperty
-    @OneToOne
-    private Season season;
+
 }

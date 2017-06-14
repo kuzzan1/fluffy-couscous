@@ -16,17 +16,18 @@ public class Fixture {
 
     @JsonProperty
     private @Id Integer id;
-    @JsonProperty("localteam_id")
-    private Integer localTeamId;
-    @JsonProperty("visitorteam_id")
-    private Integer visitorTeamId;
     @JsonProperty
     @OneToOne
     private Formations formations;
     @JsonProperty
     @OneToOne
     private Scores scores;
+    @JsonProperty
+    @OneToOne
+    private Team localTeam;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,targetEntity = Season.class)
-    private Season season;
+    @JsonProperty
+    @OneToOne
+    private Team visitorTeam;
+
 }

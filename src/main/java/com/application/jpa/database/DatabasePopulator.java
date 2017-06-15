@@ -1,15 +1,15 @@
 package com.application.jpa.database;
 
 import com.application.jpa.api.MonksService;
-import com.application.jpa.database.DatabaseLoader;
-import com.application.jpa.domain.Fixture;
-import com.application.jpa.domain.wrappers.Fixtures;
+import com.application.jpa.domain.api.Fixture;
+import com.application.jpa.domain.api.Fixtures;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,9 +34,24 @@ public class DatabasePopulator {
 
         List<Fixture> fixtures = service.get( "fixtures/between/"+today+"/"+sevendays+"?include=localTeam,visitorTeam,league", Fixtures.class).getData();
 
-        for( Fixture fixture : fixtures ) {
-            database.save( fixture );
-        }
+        List<com.application.jpa.domain.League> leagues = new ArrayList<>();
+
+        fixtures.forEach( fixture -> {
+            com.application.jpa.domain.League exportLeague = new com.application.jpa.domain.League( fixture.getLeague() );
+            com.application.jpa.domain.Fixture exportFixture = new com.application.jpa.domain.Fixture( fixture );
+
+            if(leagues.contains( exportLeague )) {
+                leagues.get( leagues.indexOf( exportLeague )).getFixtures().add(exportFixture);
+            } else {
+                exportLeague.getFixtures().add(exportFixture);
+                leagues.add( exportLeague );
+            }
+        } );
+
+
+        leagues.forEach( league -> database.save( league ) );
+
+
 
         return fixtures;
     }

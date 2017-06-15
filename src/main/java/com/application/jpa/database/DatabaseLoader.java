@@ -29,4 +29,9 @@ public class DatabaseLoader {
         teamsRepository.save(fixture.getVisitorTeam());
         fixtureReposistory.save( fixture );
     }
+
+    public void save( League league ) {
+        league.getFixtures().forEach( this::save ) ;
+        leagueRepository.save( league );
+    }
 }

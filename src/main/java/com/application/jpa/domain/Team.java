@@ -29,6 +29,16 @@ public class Team {
     @OneToOne(mappedBy = "visitorTeam")
     private Fixture awayFixture;
 
+
+    public Team( com.application.jpa.domain.api.Team team ) {
+        this.id = team.getId();
+        this.name = team.getName();
+        this.logo = team.getLogo();
+    }
+
+    public Team() {
+    }
+
     @JsonProperty("data")
     public void setFixtures( Map<String, Object> data ) {
         this.id = (Integer)data.get("id");

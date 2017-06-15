@@ -28,4 +28,11 @@ public class Scores {
 
     @OneToOne(mappedBy = "scores")
     private Fixture fixture;
+
+    public Scores( com.application.jpa.domain.api.Scores scores ) {
+
+    }
+
+    public Scores() {
+    }
 }

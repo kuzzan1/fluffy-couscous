@@ -26,4 +26,12 @@ public class Formations {
 
     @OneToOne(mappedBy = "formations")
     private Fixture fixture;
+
+    public Formations( com.application.jpa.domain.api.Formations formations ) {
+        this.localTeamFormation = formations.getLocalTeamFormation();
+        this.visitorTeamFormation = formations.getVisitorTeamFormation();
+    }
+
+    public Formations() {
+    }
 }

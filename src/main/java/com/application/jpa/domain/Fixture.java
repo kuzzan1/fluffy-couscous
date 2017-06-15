@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jonas on 2017-06-12.
@@ -23,16 +24,15 @@ public class Fixture {
     @OneToOne
     private Scores scores;
     @JsonProperty
-    @OneToOne
+    @ManyToOne
     private Team localTeam;
     @JsonProperty
-    @OneToOne
+    @ManyToOne
     private Team visitorTeam;
-
     @JsonProperty
     @ManyToOne
     private League league;
-
+    private String time;
 
     public Fixture() {
     }
@@ -43,5 +43,7 @@ public class Fixture {
         this.scores = new Scores(fixture.getScores());
         this.localTeam = new Team(fixture.getLocalTeam());
         this.visitorTeam = new Team( fixture.getVisitorTeam());
+        String time = fixture.getTime().getStarting().getTime();
+        this.time = time.substring(0, time.length() -3);;
     }
 }

@@ -21,6 +21,9 @@ public class Fixture {
     private Team visitorTeam;
     @JsonProperty
     private League league;
+    @JsonProperty
+    private Time time;
+
 
     public Integer getId() {
         return id;
@@ -68,5 +71,13 @@ public class Fixture {
 
     public void setLeague( League league ) {
         this.league = league;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 }

@@ -29,7 +29,7 @@ public class DatabasePopulator {
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
         String today = localDate.format( formatter );
-        LocalDate sevenDatsDate = localDate.plusDays( 7 );
+        LocalDate sevenDatsDate = localDate.plusDays( 20 );
         String sevendays = sevenDatsDate.format( formatter );
 
         List<Fixture> fixtures = service.get( "fixtures/between/"+today+"/"+sevendays+"?include=localTeam,visitorTeam,league", Fixtures.class).getData();

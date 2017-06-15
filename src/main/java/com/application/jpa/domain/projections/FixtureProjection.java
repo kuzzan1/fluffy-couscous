@@ -16,4 +16,5 @@ public interface FixtureProjection {
     Formations getFormations();
     Team getLocalTeam();
     Team getVisitorTeam();
+    String getTime();
 }

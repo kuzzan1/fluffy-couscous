@@ -30,6 +30,10 @@ public class Scores {
     private Fixture fixture;
 
     public Scores( com.application.jpa.domain.api.Scores scores ) {
+        this.localTeamScore = scores.getLocalTeamScore();
+        this.visitorTeamScore =scores.getVisitorTeamScore();
+        this.htScore = scores.getHtScore();
+        this.ftScore = scores.getFtScore();
 
     }
 

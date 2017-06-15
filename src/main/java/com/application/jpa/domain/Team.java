@@ -5,7 +5,9 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,12 +24,12 @@ public class Team {
     private String logo;
 
     @JsonProperty
-    @OneToOne(mappedBy = "localTeam")
-    private Fixture localFixture;
+    @OneToMany(mappedBy = "localTeam")
+    private List<Fixture> localFixture;
 
     @JsonProperty
-    @OneToOne(mappedBy = "visitorTeam")
-    private Fixture awayFixture;
+    @OneToMany(mappedBy = "visitorTeam")
+    private List<Fixture> awayFixture;
 
 
     public Team( com.application.jpa.domain.api.Team team ) {

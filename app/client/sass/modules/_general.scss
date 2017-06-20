@@ -1,0 +1,66 @@
+// general.scss
+
+body,html {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	background: $body-bg-color;
+	background-size: 20%;
+}
+
+#backToTop {
+
+
+	a {
+		color: white;
+		position: fixed;
+		font-size: 13pt;
+		right: 5%;
+		bottom: 5%;
+		cursor: pointer;
+		padding: 15px;
+		color: white;
+		background: $primary-color;
+	}
+}
+
+#wrapper {
+	min-height: 100vh;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-red {
+	color: #E34949;
+}
+
+.text-green {
+	color: #8FAB46;
+}
+
+.white-bg {
+	background: white;
+}
+
+.cover-strip {
+	background: url('../images/body-bg.jpg');
+	background-size: 50%;
+	background-position: top center;
+	position: absolute;
+	width: 100%;
+	height: $cover-strip-height;
+	top: 0;
+	z-index: -1;
+}

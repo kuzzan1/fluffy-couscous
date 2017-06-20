@@ -1,0 +1,24 @@
+// variables.scss
+
+$body-bg: "../images/body-bg.jpg";
+$cover-strip-height: 55%;
+$parent-panel-border-radius: 1px;
+$parent-panel-margin-top: 0%;
+
+// colours
+$cover-strip-color: #F0F0F0;
+$primary-color: #337AB7;
+$secondary-color: #21b799;
+$body-bg-color: $primary-color;
+$primary-black: #2c2c2c;
+$primary-grey: #848484;
+
+$live-color: #7FAE3C;
+$finished-color: #D79D48;
+$unsuccessful-color: #923030;
+$selected-color: $secondary-color;
+
+$dates-color: $secondary-color;
+$active-date-color: $secondary-color;
+
+$date-dropdown-status: false;

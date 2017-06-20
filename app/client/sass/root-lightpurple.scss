@@ -1,0 +1,55 @@
+/* =========================
+
+App: Live Score
+Version: 1.0
+Author: Hardik Manktala
+Contact:
+	- http://www.hardikmanktala.com
+	- chat@hardikmanktala.com
+	- Skype: hardik.manktala
+
+========================= */
+
+/* ======================
+
+root.css - Main Stylesheet
+
+======================= */
+
+// Base Imports
+@import "_variables";
+@import "_mixins";
+@import "_fonts";
+$secondary-color: #8aaad9;
+
+/* Font Faces */
+// @font-face {
+// 	@include fontface(Titillium, '../fonts/TitilliumWeb-Regular.ttf');
+// }
+//
+// @font-face {
+// 	@include fontface(Titillium-Light, '../fonts/TitilliumWeb-Light.ttf');
+// }
+//
+// @font-face {
+// 	@include fontface(Nexa, '../fonts/Nexa-Light.otf');
+// }
+//
+// @font-face {
+// 	@include fontface(Titillium-Bold, '../fonts/TitilliumWeb-SemiBold.ttf');
+// }
+//
+// @font-face {
+// 	@include fontface(RobotoSlab, '../fonts/RobotoSlab-Regular.ttf');
+// }
+//
+// @font-face {
+// 	@include fontface(PaytoneOne, '../fonts/PaytoneOne.ttf');
+// }
+
+// Module Imports
+
+@import "modules/_general.scss";
+@import "modules/_navbar.scss";
+@import "modules/_parent-panel.scss";
+@import "modules/_popup.scss";

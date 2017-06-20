@@ -1,6 +1,9 @@
 import React from 'react';
 import client from '../api/client';
 
+import css from '../styles/root.css';
+import responsive from '../styles/responsive.css';
+
 export default class App extends React.Component {
 
     constructor(props) {
@@ -15,9 +18,12 @@ export default class App extends React.Component {
     	}
 
   render() {
-      return <LeagueList leagues={this.state.leagues}/>;
+      return (
+        <LeagueList leagues={this.state.leagues}/>          
+      )
     }
 }
+
 
 class LeagueList extends React.Component {
     render() {
@@ -25,9 +31,9 @@ class LeagueList extends React.Component {
             <League key={league._links.self.href} league={league} />
         );
         return(
-            <div>
-                    {leagues}
-            </div>
+          <div id="allmatches" className="tab-pane fade active in">
+            {leagues}
+          </div>
         )
     }
 }
@@ -36,10 +42,17 @@ class League extends React.Component {
     render() {
       var fixtures = <FixtureList key={this.props.league._links.fixtures} url={this.props.league._links.fixtures} />
         return (
-            <div>
-                <h1>{this.props.league.name}</h1>
+          <article id="live">
+          <div className="panel">
+            <div className="panel-heading">
+            <a href="#">{this.props.league.name}</a>
+            <i className="fa fa-star-o addToFav"></i>
+            </div>
+            <div className="panel-body">
                 {fixtures}
             </div>
+          </div>
+          </article>
         )
     }
 }
@@ -63,9 +76,11 @@ class FixtureList extends React.Component {
         );
 
         return (
-            <div>
-            {fixtures}
-            </div>
+            <table className="table table-striped table-hover">
+              <tbody className="text-center">
+                {fixtures}
+              </tbody>
+            </table>
         )
     }
 }
@@ -73,16 +88,13 @@ class FixtureList extends React.Component {
 class Fixture extends React.Component {
         render() {
             return (
-              <div style={{display:'flex'}}>
-                <div style={{height:'40px'}}>
-                {this.props.fixture.time}  
-
-                <img style={{maxHeight:'100%'}} src={this.props.fixture.localTeam.logo} />
-                {this.props.fixture.localTeam.name}
-                  <span style={{padding: '5px'}}>{this.props.fixture.scores.ft_score}</span>
-                   {this.props.fixture.visitorTeam.name} <img style={{maxHeight:'100%'}} src={this.props.fixture.visitorTeam.logo} />
-                </div>
-              </div>
+              <tr>
+                <td>{this.props.fixture.time}</td>
+                <td className="text-green"><li className="fa fa-circle live">40'</li></td>
+                <td className="text-right"><a href="#">{this.props.fixture.localTeam.name}</a></td>
+                <td className="score text-green">{this.props.fixture.scores.ft_score}</td>
+                <td className="text-left"><a href="#">{this.props.fixture.visitorTeam.name}</a></td>
+              </tr>
             )
         }
 }

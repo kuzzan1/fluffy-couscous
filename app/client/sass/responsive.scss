@@ -1,0 +1,236 @@
+/* =========================
+
+App: Live Score
+Version: 1.0
+Author: Hardik Manktala
+Contact:
+	- http://www.hardikmanktala.com
+	- chat@hardikmanktala.com
+	- Skype: hardik.manktala
+
+========================= */
+
+/* ======================
+
+responsive.css - Responsive Styles
+
+======================= */
+
+@media screen and (max-width: 727px) {
+
+	.parent-panel {
+
+		.tabs {
+
+			.nav.nav-tabs {
+				li {
+					a {
+						i {
+							display: block;
+							margin-bottom: 10px;
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+}
+
+@media screen and (max-width: 630px) {
+
+	.parent-container {
+		padding: 0px;
+	}
+
+	.parent-panel {
+		padding: 0px;
+	}
+
+	.col-2 {
+		padding: 30px;
+	}
+
+}
+
+@media screen and (max-width: 530px) {
+
+	.parent-panel {
+		#tabContent {
+			.panel {
+				.panel-body {
+					td {
+						font-size: 9pt;
+
+						&:nth-child(1) {
+							width: 8%;
+						}
+
+						&:nth-child(2) {
+							width: 12%;
+						}
+
+						&:nth-child(3) {
+							width: 28%;
+						}
+
+						&:nth-child(4) {
+							width: 12%;
+						}
+
+						&:nth-child(5) {
+							width: 28%;
+						}
+
+						&:nth-child(6) {
+							width: 12%;
+						}
+
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+
+	.parent-panel {
+		#tabContent {
+			.panel {
+				.panel-body {
+					td {
+
+						&:nth-child(1) {
+							width: 8%;
+						}
+
+						&:nth-child(2) {
+							width: 14%;
+						}
+
+						&:nth-child(3) {
+							width: 26%;
+						}
+
+						&:nth-child(4) {
+							width: 12%;
+						}
+
+						&:nth-child(5) {
+							width: 26%;
+						}
+
+						&:nth-child(6) {
+							width: 14%;
+						}
+
+					}
+				}
+			}
+		}
+	}
+
+
+	footer {
+		.footer-links {
+			margin-top: 40px;
+		}
+	}
+
+}
+
+@media screen and (max-width: 375px) {
+
+	.parent-panel {
+
+		.tabs {
+			.nav.nav-tabs {
+				li {
+					a {
+						font-size: 8pt;
+						padding-left: 2px;
+						padding-right: 2px;
+					}
+				}
+			}
+		}
+
+		#tabContent {
+			.panel {
+				.panel-body {
+					td {
+						font-size: 8pt;
+
+						&:nth-child(1) {
+							width: 7%;
+						}
+
+						&:nth-child(2) {
+							width: 14%;
+						}
+
+						&:nth-child(3) {
+							width: 23%;
+						}
+
+						&:nth-child(4) {
+							width: 14%;
+						}
+
+						&:nth-child(5) {
+							width: 23%;
+						}
+
+						&:nth-child(6) {
+							width: 18%;
+						}
+
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media screen and (max-width: 320px) {
+
+
+	.parent-panel #tabContent {
+		.panel {
+			.panel-body {
+				td {
+					padding: 1px;
+					&:nth-child(1) {
+						width: 6%;
+					}
+
+					&:nth-child(2) {
+						width: 12%;
+					}
+
+					&:nth-child(3) {
+						width: 26%;
+					}
+
+					&:nth-child(4) {
+						width: 14%;
+					}
+
+					&:nth-child(5) {
+						width: 26%;
+					}
+
+					&:nth-child(6) {
+						width: 16%;
+					}
+
+				}
+			}
+		}
+	}
+}

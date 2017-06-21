@@ -1,9 +1,11 @@
 package com.application.jpa.database;
 
 import com.application.jpa.api.MonksService;
+import com.application.jpa.domain.League;
 import com.application.jpa.domain.api.Fixture;
 import com.application.jpa.domain.api.Fixtures;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +26,19 @@ public class DatabasePopulator {
     @Autowired
     private DatabaseLoader database;
 
-    @RequestMapping("/populate/db")
+
+    @RequestMapping("fixtures/{date}")
+    private List<League> getTodaysMatches( @PathVariable String date) {
+        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+
+        List<com.application.jpa.domain.League> leagues = new ArrayList<>();
+
+        getLeageus( fixtures, leagues );
+
+        return leagues;
+    }
+
+    @RequestMapping("populate/db")
     public List<Fixture> getLeague() {
         LocalDate localDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
@@ -34,10 +48,20 @@ public class DatabasePopulator {
 
         List<Fixture> fixtures = service.get( "fixtures/between/"+today+"/"+sevendays+"?include=localTeam,visitorTeam,league", Fixtures.class).getData();
 
-        List<com.application.jpa.domain.League> leagues = new ArrayList<>();
+        List<League> leagues = new ArrayList<>();
 
+        getLeageus( fixtures, leagues );
+
+        leagues.forEach( league -> database.save( league ) );
+
+
+
+        return fixtures;
+    }
+
+    private void getLeageus( List<Fixture> fixtures, List<League> leagues ) {
         fixtures.forEach( fixture -> {
-            com.application.jpa.domain.League exportLeague = new com.application.jpa.domain.League( fixture.getLeague() );
+            League exportLeague = new League( fixture.getLeague() );
             com.application.jpa.domain.Fixture exportFixture = new com.application.jpa.domain.Fixture( fixture );
 
             if(leagues.contains( exportLeague )) {
@@ -47,13 +71,6 @@ public class DatabasePopulator {
                 leagues.add( exportLeague );
             }
         } );
-
-
-        leagues.forEach( league -> database.save( league ) );
-
-
-
-        return fixtures;
     }
 
 }

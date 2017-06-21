@@ -12,7 +12,7 @@ public class Team {
     private Integer id;
     @JsonProperty
     private String name;
-    @JsonProperty
+    @JsonProperty("logo_path")
     private String logo;
 
     @JsonProperty("data")

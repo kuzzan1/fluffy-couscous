@@ -1,5 +1,6 @@
 app/node_modules
 app/client/.sass-cache
+app/.sass-cache
 *.iml  
 target
 .idea

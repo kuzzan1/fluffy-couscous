@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
-import React from 'react';
+import React, {Component} from 'react';
 
-export default class DateComponent extends React.Component {
+export default class DateComponent extends Component {
     render() {
       return (
         <Link to={"/fixtures/"+this.props.date} key={this.props.date}>

@@ -4,6 +4,8 @@ import com.application.jpa.api.MonksService;
 import com.application.jpa.domain.League;
 import com.application.jpa.domain.api.Fixture;
 import com.application.jpa.domain.api.Fixtures;
+import com.application.jpa.domain.api.Team;
+import com.application.jpa.domain.api.Teams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,31 @@ public class DatabasePopulator {
     private MonksService service;
     @Autowired
     private DatabaseLoader database;
+
+
+    @RequestMapping("fixture/topMatch")
+    private List<Fixture> getFixtures() {
+        List<Fixture> returnList = new ArrayList<>();
+        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        // List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        List<Fixture> fixtures = service.get( "fixtures/between/2017-07-01/2017-07-01?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+
+        fixtures.forEach(fixture -> {
+            //TODO add BR logic for topmatches
+            if(returnList.size() < 3) {
+                returnList.add(fixture);
+            }
+        });
+
+        return returnList;
+
+    }
+
+    @RequestMapping("team/{id}")
+    private Team getTeam(@PathVariable String id) {
+        return service.get("teams/"+id, Teams.class).getData();
+
+    }
 
 
     @RequestMapping("fixtures/{date}")

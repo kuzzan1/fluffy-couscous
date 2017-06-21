@@ -6,6 +6,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by jonas on 2017-06-12.
  */
@@ -16,6 +19,7 @@ public class MonksService {
     private RestTemplate restTemplate;
     private final static String BASE_URL = "https://soccer.sportmonks.com/api/v2.0/";
 
+    private Map<String, Object> cached = new HashMap<>();
 
     private String getApiKey( String url ) {
         url = BASE_URL + url;
@@ -25,7 +29,14 @@ public class MonksService {
 
 
     public <T> T get( String requestUrl, final Class<T> clazz ) {
-        return exchange( getApiKey( requestUrl ), clazz, HttpMethod.GET );
+        String apiKey = getApiKey(requestUrl);
+        if(cached.containsKey(apiKey)) {
+            return (T) cached.get(apiKey);
+        } else {
+            T object = exchange(apiKey, clazz, HttpMethod.GET);
+            cached.put(apiKey, object);
+            return object;
+        }
     }
 
 

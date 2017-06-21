@@ -24,7 +24,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --history-api-fallback"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",

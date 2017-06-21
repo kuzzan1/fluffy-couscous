@@ -1,11 +1,11 @@
 package com.application.jpa.database;
 
 import com.application.jpa.api.MonksService;
+import com.application.jpa.domain.api.Standing;
+import com.application.jpa.domain.api.wrapper.Standings;
 import com.application.jpa.domain.League;
-import com.application.jpa.domain.api.Fixture;
-import com.application.jpa.domain.api.Fixtures;
-import com.application.jpa.domain.api.Team;
-import com.application.jpa.domain.api.Teams;
+import com.application.jpa.domain.api.*;
+import com.application.jpa.domain.api.wrapper.Seasons;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,15 +25,17 @@ public class DatabasePopulator {
 
     @Autowired
     private MonksService service;
-    @Autowired
-    private DatabaseLoader database;
 
+    @RequestMapping("standings/{seasonId}")
+    private List<Standing> getStandings(@PathVariable Integer seasonId) {
+        return service.get("standings/season/" + seasonId+"?includes=team", Standings.class).getData();
+    }
 
     @RequestMapping("fixture/topMatch")
     private List<Fixture> getFixtures() {
         List<Fixture> returnList = new ArrayList<>();
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        // List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        //List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
         List<Fixture> fixtures = service.get( "fixtures/between/2017-07-01/2017-07-01?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
 
         fixtures.forEach(fixture -> {
@@ -65,26 +67,6 @@ public class DatabasePopulator {
         return leagues;
     }
 
-    @RequestMapping("populate/db")
-    public List<Fixture> getLeague() {
-        LocalDate localDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
-        String today = localDate.format( formatter );
-        LocalDate sevenDatsDate = localDate.plusDays( 70 );
-        String sevendays = sevenDatsDate.format( formatter );
-
-        List<Fixture> fixtures = service.get( "fixtures/between/"+today+"/"+sevendays+"?include=localTeam,visitorTeam,league", Fixtures.class).getData();
-
-        List<League> leagues = new ArrayList<>();
-
-        getLeageus( fixtures, leagues );
-
-        leagues.forEach( league -> database.save( league ) );
-
-
-
-        return fixtures;
-    }
 
     private void getLeageus( List<Fixture> fixtures, List<League> leagues ) {
         fixtures.forEach( fixture -> {

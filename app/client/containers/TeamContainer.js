@@ -14,14 +14,14 @@ export default class TeamContainer extends Component {
            this.setState({team: response.entity});
          });
    }
-   
+
   componentDidMount() {
       this.fetchData(this.state.id);
     }
 
-    componentWillReceiveProps(nextProps) {
-      this.fetchData(nextProps.match.params.id)
-    }
+  componentWillReceiveProps(nextProps) {
+    this.fetchData(nextProps.match.params.id)
+  }
 
     render() {
       return (

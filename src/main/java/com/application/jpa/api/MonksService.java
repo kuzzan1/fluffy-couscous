@@ -41,8 +41,9 @@ public class MonksService {
 
 
     private <T> T exchange( final String requestUrl, final Class<T> clazz, final HttpMethod method ) {
+        T body = restTemplate.exchange(requestUrl, method, null, clazz).getBody();
         System.out.println(requestUrl);
-        return restTemplate.exchange( requestUrl, method, null, clazz ).getBody();
+        return body;
     }
 
     @Bean

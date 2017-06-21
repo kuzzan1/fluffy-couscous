@@ -3,11 +3,14 @@
 */
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom'
+
 import DatePicker from './containers/DatePicker'
 import LeagueContainer from './containers/LeagueContainer'
 import TeamContainer from './containers/TeamContainer'
-import {BrowserRouter, Route, Link} from 'react-router-dom'
 import TopMatchContainer from './containers/TopMatchContainer'
+import StandingsContainer from './containers/StandingsContainer'
+
 import css from './styles/root.css';
 import responsive from './styles/responsive.css';
 
@@ -28,8 +31,11 @@ ReactDOM.render((
               <div className="col-md-8 col-1">
                 <div id="tabContent" className="tab-content">
                   <Route exactpath="/" component={DatePicker} />
+                  <Switch>
                   <Route path="/fixtures/:date" component={LeagueContainer} />
                   <Route path="/team/:id" component={TeamContainer} />
+                  <Route path="/standings/:seasonId" component={StandingsContainer} />
+                  </Switch>
                 </div>
               </div>
               <div className="col-md-4 col-2">

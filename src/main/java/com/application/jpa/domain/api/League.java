@@ -11,7 +11,7 @@ public class League {
 
     @JsonProperty
     private Integer id;
-    @JsonProperty("current_season_id")
+    @JsonProperty
     private Integer currentSeasonId;
     @JsonProperty
     private String name;
@@ -20,7 +20,7 @@ public class League {
     public void setFixtures( Map<String, Object> data ) {
         this.id = (Integer)data.get("id");
         this.name = (String)data.get("name");
-        this.currentSeasonId = (Integer) data.get("804");
+        this.currentSeasonId = (Integer) data.get("current_season_id");
     }
 
     public Integer getId() {

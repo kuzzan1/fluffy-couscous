@@ -6,12 +6,14 @@ export default class Fixture extends Component {
             return (
               <tr>
                 <td>{this.props.fixture.time}</td>
+                <td><img src={this.props.fixture.localTeam.logo} /></td>
                 <td className="text-green"><li className="fa fa-circle live">40'</li></td>
                 <td className="text-right"><Link to={"/team/"+this.props.fixture.localTeam.id} id={this.props.fixture.localTeam.id}>{this.props.fixture.localTeam.name}</Link></td>
                 <td className="score text-green">{this.props.fixture.scores.ft_score}</td>
                 <td className="text-left">
                 <Link to={"/team/"+this.props.fixture.visitorTeam.id} id={this.props.fixture.visitorTeam.id}>
                 {this.props.fixture.visitorTeam.name}</Link></td>
+                <td><img src={this.props.fixture.visitorTeam.logo} /></td>
               </tr>
             )
         }

@@ -1,11 +1,10 @@
 package com.application.jpa.database;
 
 import com.application.jpa.api.MonksService;
-import com.application.jpa.domain.api.Standing;
-import com.application.jpa.domain.api.wrapper.Standings;
 import com.application.jpa.domain.League;
 import com.application.jpa.domain.api.*;
-import com.application.jpa.domain.api.wrapper.Seasons;
+import com.application.jpa.domain.api.wrapper.Players;
+import com.application.jpa.domain.api.wrapper.Standings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +30,17 @@ public class DatabasePopulator {
         return service.get("standings/season/" + seasonId+"?includes=team", Standings.class).getData();
     }
 
+    @RequestMapping("player/{playerId}")
+    private Player getPlayer( @PathVariable Integer playerId) {
+        return service.get("players/" + playerId, Players.class).getData();
+    }
+
     @RequestMapping("fixture/topMatch")
     private List<Fixture> getFixtures() {
         List<Fixture> returnList = new ArrayList<>();
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        //List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
-        List<Fixture> fixtures = service.get( "fixtures/between/2017-07-01/2017-07-01?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        //List<Fixture> fixtures = service.get( "fixtures/between/2017-07-01/2017-07-01?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
 
         fixtures.forEach(fixture -> {
             //TODO add BR logic for topmatches
@@ -51,7 +55,7 @@ public class DatabasePopulator {
 
     @RequestMapping("team/{id}")
     private Team getTeam(@PathVariable String id) {
-        return service.get("teams/"+id, Teams.class).getData();
+        return service.get("teams/"+id+"?include=squad,venue", Teams.class).getData();
 
     }
 

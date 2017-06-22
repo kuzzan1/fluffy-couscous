@@ -8,8 +8,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Standing {
     @JsonProperty
     private Integer position;
+    @JsonProperty("team_id")
+    private String teamId;
     @JsonProperty
-    private String team_id;
+    private Integer points;
+    @JsonProperty("team_name")
+    private String teamName;
+    @JsonProperty
+    private String status;
 
     public Integer getPosition() {
         return position;
@@ -19,11 +25,35 @@ public class Standing {
         this.position = position;
     }
 
-    public String getTeam_id() {
-        return team_id;
+    public String getTeamId() {
+        return teamId;
     }
 
-    public void setTeam_id(String team_id) {
-        this.team_id = team_id;
+    public void setTeamId( String teamId ) {
+        this.teamId = teamId;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints( Integer points ) {
+        this.points = points;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName( String teamName ) {
+        this.teamName = teamName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus( String status ) {
+        this.status = status;
     }
 }

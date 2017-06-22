@@ -14,6 +14,13 @@ public class Team {
     private String name;
     @JsonProperty("logo_path")
     private String logo;
+    @JsonProperty
+    private Squad squad;
+    @JsonProperty
+    private Venue venue;
+    @JsonProperty
+    private Coach coach;
+
 
     @JsonProperty("data")
     public void setFixtures( Map<String, Object> data ) {

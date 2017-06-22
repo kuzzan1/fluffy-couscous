@@ -10,7 +10,7 @@ export default class StandingsContainer extends Component {
       this.state = {standings: [], seasonId: props.match.params.seasonId};
    }
 
-  fetchData(seasonId) {
+  fetchData() {
      client({method: 'GET', path: 'http://localhost:8080/data/standings/' + this.state.seasonId}).then(response => {
            this.setState({standings: response.entity});
          });
@@ -22,10 +22,14 @@ export default class StandingsContainer extends Component {
 
   render() {
     var standings = this.state.standings.map(standing =>
-        <StandingsComponent standings={standing} />
+        <StandingsComponent key={standing.position} standings={standing} />
     );
     return (
-      <div>{standings}</div>
+      <table>
+        <tbody>
+            {standings}
+        </tbody>
+      </table>
     )
   }
 

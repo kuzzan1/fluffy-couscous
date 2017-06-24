@@ -5,7 +5,6 @@ import PlayerComponent from '../components/PlayerComponent'
 export default class PlayerContainer extends Component {
     constructor(props) {
         super(props);
-        console.log(props)
         this.state = {player: {}, stats: this.props.player};
      }
 

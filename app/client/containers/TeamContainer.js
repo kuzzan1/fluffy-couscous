@@ -6,7 +6,6 @@ export default class TeamContainer extends Component {
 
   constructor(props) {
       super(props);
-      console.log(props);
       this.state = {team: {} , id: props.match.params.id};
    }
 
@@ -17,12 +16,10 @@ export default class TeamContainer extends Component {
    }
 
   componentDidMount() {
-      console.log('mounted');
       this.fetchData(this.state.id);
     }
 
   componentWillReceiveProps(nextProps) {
-      console.log('mounted');
     this.fetchData(nextProps.match.params.id)
   }
 

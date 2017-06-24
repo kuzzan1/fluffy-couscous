@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Scores {
-    @JsonProperty("localTeam_Score")
+    @JsonProperty("localteam_score")
     private String localTeamScore;
-    @JsonProperty("visitorTeam_score")
+    @JsonProperty("visitorteam_score")
     private String visitorTeamScore;
     @JsonProperty("ht_score")
     private String htScore;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FixturesComponent from './FixturesComponent';
 import {Link} from 'react-router-dom'
 export default class LeagueComponent extends Component {
-    render() {
+  render() {
       var fixtures = <FixturesComponent key={this.props.league.id} fixtures={this.props.league.fixtures} />
         return (
           <article id="live">

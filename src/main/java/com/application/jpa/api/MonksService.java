@@ -39,6 +39,14 @@ public class MonksService {
         }
     }
 
+    public <T> T byPassCached( String requestUrl, final Class<T> clazz ) {
+        String apiKey = getApiKey(requestUrl);
+        T object = exchange(apiKey, clazz, HttpMethod.GET);
+        cached.put(apiKey, object);
+        return object;
+    }
+
+
 
     private <T> T exchange( final String requestUrl, final Class<T> clazz, final HttpMethod method ) {
         System.out.println(requestUrl);

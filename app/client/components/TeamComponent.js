@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlayerContainer from '../containers/PlayerContainer'
+import CoachComponent from './CoachComponent'
 
 export default class TeamComponent extends Component {
         render() {
@@ -10,10 +11,17 @@ export default class TeamComponent extends Component {
                 )
             }
 
+            var coach;
+            if(this.props.team.coach) {
+              coach = <CoachComponent key={this.props.team.coach.coach_id} coach={this.props.team.coach} />
+              console.log(coach)
+            }
+
             return (
               <div>
                   <img src={this.props.team.logo_path} />
                   {this.props.team.name}
+                  {coach}
                   {players}
               </div>
             )

@@ -26,5 +26,9 @@ module.exports = {
 
     ]
     },
+    node: {
+           net: 'empty',
+           tls: 'empty'
+       },
     plugins: [HtmlWebpackPluginConfig, new ExtractTextPlugin("styles/root.css")]
   }

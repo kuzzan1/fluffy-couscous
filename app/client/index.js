@@ -10,6 +10,7 @@ import LeagueContainer from './containers/LeagueContainer'
 import TeamContainer from './containers/TeamContainer'
 import TopMatchContainer from './containers/TopMatchContainer'
 import StandingsContainer from './containers/StandingsContainer'
+import TestSocket from './containers/TestSocket'
 
 import css from './styles/root.css';
 import responsive from './styles/responsive.css';
@@ -30,11 +31,12 @@ ReactDOM.render((
             <div className="row">
               <div className="col-md-8 col-1">
                 <div id="tabContent" className="tab-content">
-                  <Route exactpath="/" component={DatePicker} />
+                  <DatePicker />
                   <Switch>
-                  <Route path="/fixtures/:date" component={LeagueContainer} />
-                  <Route path="/team/:id" component={TeamContainer} />
-                  <Route path="/standings/:seasonId" component={StandingsContainer} />
+                    <Route path="/fixtures/:date" component={LeagueContainer} />
+                    <Route path="/team/:id" component={TeamContainer} />
+                    <Route path="/standings/:seasonId" component={StandingsContainer} />
+                    <Route path="/" component={LeagueContainer} />
                   </Switch>
                 </div>
               </div>

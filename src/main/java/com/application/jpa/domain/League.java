@@ -11,17 +11,15 @@ import java.util.List;
 /**
  * Created by jonas on 2017-06-12.
  */
-@Entity
 public class League {
 
     @JsonProperty
-    private @Id Integer id;
+    private Integer id;
     @JsonProperty("current_season_id")
     private Integer currentSeasonId;
     @JsonProperty
     private String name;
     @JsonProperty
-    @OneToMany
     private List<Fixture> fixtures = new ArrayList<>();
 
     public League(  ) {

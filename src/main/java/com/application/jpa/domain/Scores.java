@@ -12,11 +12,7 @@ import javax.persistence.OneToOne;
 /**
  * Created by jonas on 2017-06-12.
  */
-@Data
-@Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Scores {
-    private @Id @GeneratedValue Integer id;
     @JsonProperty("localTeam_Score")
     private String localTeamScore;
     @JsonProperty("visitorTeam_score")
@@ -25,9 +21,6 @@ public class Scores {
     private String htScore;
     @JsonProperty("ft_score")
     private String ftScore;
-
-    @OneToOne(mappedBy = "scores")
-    private Fixture fixture;
 
     public Scores( com.application.jpa.domain.api.Scores scores ) {
         this.localTeamScore = scores.getLocalTeamScore();

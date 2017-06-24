@@ -11,7 +11,7 @@ export default class DatePicker extends React.Component {
       var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       this.state = {days: days, months: months};
-   }
+  }
 
   render() {
     var dates = []
@@ -21,7 +21,14 @@ export default class DatePicker extends React.Component {
         var dayNumber = date.getDate();
         var dayName = this.state.days[date.getDay()]
         var monthName =  this.state.months[date.getMonth()]
-        dates.push(<DateComponent key={i} month='Jun' dayName={dayName} dayNumber={dayNumber} date={date.toISOString().substring(0, 10)}/>)
+        dates.push(
+          <DateComponent
+                        key={i}
+                        month={monthName}
+                        dayName={dayName}
+                        dayNumber={dayNumber}
+                        date={date.toISOString().substring(0, 10)}                         
+          />)
       }
       return (
         <ul className="swiper-wrapper">

@@ -13,22 +13,18 @@ import java.util.Map;
 /**
  * Created by jonas on 2017-06-14.
  */
-@Data
-@Entity
 public class Team {
     @JsonProperty
-    private @Id Integer id;
+    private Integer id;
     @JsonProperty
     private String name;
     @JsonProperty
     private String logo;
 
     @JsonProperty
-    @OneToMany(mappedBy = "localTeam")
     private List<Fixture> localFixture;
 
     @JsonProperty
-    @OneToMany(mappedBy = "visitorTeam")
     private List<Fixture> awayFixture;
 
 
@@ -46,5 +42,45 @@ public class Team {
         this.id = (Integer)data.get("id");
         this.name = (String)data.get("name");
         this.logo = (String)data.get("logo_path");
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public List<Fixture> getLocalFixture() {
+        return localFixture;
+    }
+
+    public void setLocalFixture(List<Fixture> localFixture) {
+        this.localFixture = localFixture;
+    }
+
+    public List<Fixture> getAwayFixture() {
+        return awayFixture;
+    }
+
+    public void setAwayFixture(List<Fixture> awayFixture) {
+        this.awayFixture = awayFixture;
     }
 }

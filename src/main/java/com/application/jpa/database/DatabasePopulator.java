@@ -55,7 +55,7 @@ public class DatabasePopulator {
 
     @RequestMapping("team/{id}")
     private Team getTeam(@PathVariable String id) {
-        return service.get("teams/"+id+"?include=squad,venue", Teams.class).getData();
+        return service.get("teams/"+id+"?include=squad,venue,coach", Teams.class).getData();
 
     }
 

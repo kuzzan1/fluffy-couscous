@@ -2,10 +2,12 @@ package com.application.jpa.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by jonas on 2017-06-12.
  */
-public class Time {
+public class Time implements Serializable{
     @JsonProperty
     private String status;
     @JsonProperty("starting_at")

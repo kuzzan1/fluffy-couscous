@@ -1,18 +1,13 @@
 package com.application.jpa.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 /**
  * Created by jonas on 2017-06-12.
  */
-public class Scores {
+public class Scores implements Serializable {
     @JsonProperty("localTeam_Score")
     private String localTeamScore;
     @JsonProperty("visitorTeam_score")

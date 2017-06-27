@@ -2,12 +2,13 @@ package com.application.jpa.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * Created by jonas on 2017-06-12.
  */
-public class League {
+public class League implements Serializable{
 
     @JsonProperty
     private Integer id;

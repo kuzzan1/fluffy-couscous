@@ -5,6 +5,7 @@ import com.application.jpa.domain.api.Fixture;
 import com.application.jpa.domain.api.Player;
 import com.application.jpa.domain.api.Standing;
 import com.application.jpa.domain.api.Team;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,15 @@ import java.util.List;
  */
 @Service
 public interface DataInterface {
+    @Cacheable("standings")
     List<Standing> getStandings(Integer seasonId);
+    @Cacheable("player")
     Player getPlayer(Integer playerId);
+    @Cacheable("topmatches")
     List<Fixture> getTopMatches();
+    @Cacheable("team")
     Team getTeam(Integer teamId);
+    @Cacheable("matchesForDay")
     List<League> getMatchesForDay( String date);
 
 }

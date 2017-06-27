@@ -2,16 +2,14 @@ package com.application.jpa.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by jonas on 2017-06-12.
  */
-public class League {
+public class League implements Serializable {
 
     @JsonProperty
     private Integer id;

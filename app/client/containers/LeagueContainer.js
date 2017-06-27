@@ -9,9 +9,9 @@ import Stomp from 'stompjs'
 export default class LeagueContainer extends Component {
 
     constructor(props) {
-    		super(props);
+		super(props);
         var date = props.match.params.date ? props.match.params.date : new Date().toISOString().slice(0,10);
-    		this.state = {leagues: [], date: date};
+		this.state = {leagues: [], date: date};
      }
      fetchData(date) {
        client({method: 'GET', path: 'http://localhost:8080/data/fixtures/'+date}).then(response => {
@@ -43,7 +43,7 @@ export default class LeagueContainer extends Component {
       this.fetchData(nextProps.match.params.date)
     }
 
-  render() {
+    render() {
       return (
         <LeagueComponent leagues={this.state.leagues}/>
       )

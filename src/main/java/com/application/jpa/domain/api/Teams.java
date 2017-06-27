@@ -2,13 +2,12 @@ package com.application.jpa.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
 /**
  * Created by jonas on 2017-06-21.
  */
-public class Teams {
+public class Teams implements Serializable {
 
     @JsonProperty("data")
     private Team data;

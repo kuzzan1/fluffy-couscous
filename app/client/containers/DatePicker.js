@@ -27,13 +27,19 @@ export default class DatePicker extends React.Component {
                         month={monthName}
                         dayName={dayName}
                         dayNumber={dayNumber}
-                        date={date.toISOString().substring(0, 10)}                         
+                        date={date.toISOString().substring(0, 10)}
           />)
+
+          var scrollMenu= {
+              backgroundColor: '#333',
+              overflow: 'auto',
+              whiteSpace:'nowrap'
+          }
       }
       return (
-        <ul className="swiper-wrapper">
+        <div style={scrollMenu}>
             {dates}
-        </ul>
+        </div>
       )
     }
 }

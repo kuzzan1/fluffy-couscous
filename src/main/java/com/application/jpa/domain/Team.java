@@ -1,19 +1,15 @@
 package com.application.jpa.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by jonas on 2017-06-14.
  */
-public class Team {
+public class Team implements Serializable {
     @JsonProperty
     private Integer id;
     @JsonProperty

@@ -2,10 +2,12 @@ package com.application.jpa.domain.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * Created by jonas on 2017-06-21.
  */
-public class Standing {
+public class Standing implements Serializable {
     @JsonProperty
     private Integer position;
     @JsonProperty("team_id")

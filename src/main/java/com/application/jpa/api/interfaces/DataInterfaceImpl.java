@@ -65,6 +65,15 @@ public class DataInterfaceImpl implements DataInterface {
         return leagues;
     }
 
+    @Override
+    public List<League> getMatchesForToday(String date) {
+        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        List<com.application.jpa.domain.League> leagues = new ArrayList<>();
+        getLeageus( fixtures, leagues );
+
+        return leagues;
+    }
+
 
     private void getLeageus( List<Fixture> fixtures, List<League> leagues ) {
         fixtures.forEach( fixture -> {

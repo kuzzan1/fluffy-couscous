@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("data/")
-public class DatabasePopulator {
+public class RestApi {
 
     @Autowired
     private DataInterface dataInterface;

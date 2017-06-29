@@ -26,4 +26,6 @@ public interface DataInterface {
     @Cacheable("matchesForDay")
     List<League> getMatchesForDay( String date);
 
+    List<League> getMatchesForToday( String date);
+
 }

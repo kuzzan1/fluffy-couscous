@@ -58,7 +58,7 @@ public class DataInterfaceImpl implements DataInterface {
 
     @Override
     public List<League> getMatchesForDay( String date ) {
-        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league,events", Fixtures.class ).getData();
         List<com.application.jpa.domain.League> leagues = new ArrayList<>();
         getLeageus( fixtures, leagues );
 
@@ -67,7 +67,7 @@ public class DataInterfaceImpl implements DataInterface {
 
     @Override
     public List<League> getMatchesForToday(String date) {
-        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league", Fixtures.class ).getData();
+        List<Fixture> fixtures = service.get( "fixtures/between/" + date + "/" + date + "?include=localTeam,visitorTeam,league,events", Fixtures.class ).getData();
         List<com.application.jpa.domain.League> leagues = new ArrayList<>();
         getLeageus( fixtures, leagues );
 

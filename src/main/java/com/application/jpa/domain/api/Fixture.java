@@ -1,9 +1,12 @@
 package com.application.jpa.domain.api;
 
+import com.application.jpa.domain.api.wrapper.EventsWrapper;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonas on 2017-06-12.
@@ -25,7 +28,8 @@ public class Fixture implements Serializable {
     private League league;
     @JsonProperty
     private Time time;
-
+    @JsonProperty
+    private EventsWrapper events;
 
     public Integer getId() {
         return id;
@@ -81,5 +85,13 @@ public class Fixture implements Serializable {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public EventsWrapper getEvents() {
+        return events;
+    }
+
+    public void setEvents(EventsWrapper events) {
+        this.events = events;
     }
 }

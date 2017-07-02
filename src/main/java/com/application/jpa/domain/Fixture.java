@@ -1,8 +1,11 @@
 package com.application.jpa.domain;
 
+import com.application.jpa.domain.api.Events;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jonas on 2017-06-12.
@@ -24,7 +27,8 @@ public class Fixture implements Serializable {
     private League league;
     @JsonProperty
     private String time;
-
+    @JsonProperty
+    private List<Events> events = new ArrayList();
 
     public Fixture() {
     }
@@ -37,6 +41,7 @@ public class Fixture implements Serializable {
         this.visitorTeam = new Team( fixture.getVisitorTeam());
         String time = fixture.getTime().getStarting().getTime();
         this.time = time;
+        this.events = fixture.getEvents() != null ? fixture.getEvents().getData() : null;
         //this.currentMinute =fixture.getTime().getMinute();
         this.currentMinute = String.valueOf(Math.floor(Math.random() * 100));
     }

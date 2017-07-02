@@ -38,7 +38,7 @@ public class CacheConfig extends CachingConfigurerSupport{
     public CacheManager cacheManager(RedisTemplate redisTemplate) {
         RedisCacheManager redisCacheManager = new RedisCacheManager( redisTemplate );
 
-        redisCacheManager.setDefaultExpiration( 300 );
+        redisCacheManager.setDefaultExpiration( 1 );
         return redisCacheManager;
     }
 

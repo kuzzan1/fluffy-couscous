@@ -1,8 +1,6 @@
-import css from '../styles/root.css';
-import responsive from '../styles/responsive.css';
 import React from 'react';
 import DateComponent from '../components/DateComponent.js';
-
+import swiper from '../styles/swiper.less'
 
 export default class DatePicker extends React.Component {
 
@@ -12,7 +10,25 @@ export default class DatePicker extends React.Component {
       var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       this.state = {days: days, months: months};
   }
+  componentDidMount() {
+    var datesSwiper = new Swiper('.dates', {
+  		direction: 'horizontal',
+  		slidesPerView: 7,
+  		spaceBetween: 5,
+  		breakpoints: {
+  			680: {
+  				slidesPerView: 6
+  			},
+  			560: {
+  				slidesPerView: 5
+  			},
+  			420: {
+  				slidesPerView: 4
+  			}
+  		}
+  	});
 
+    }
   render() {
     var dates = []
     var date = new Date();
@@ -29,16 +45,12 @@ export default class DatePicker extends React.Component {
                         dayNumber={dayNumber}
                         date={date.toISOString().substring(0, 10)}
           />)
-
-          var scrollMenu= {
-              backgroundColor: '#333',
-              overflow: 'auto',
-              whiteSpace:'nowrap'
-          }
       }
       return (
-        <div style={scrollMenu}>
-            {dates}
+        <div className="dates swiper-container-horizontal">
+            <ul className="swiper-wrapper">
+              {dates}
+            </ul>
         </div>
       )
     }

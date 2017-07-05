@@ -10,7 +10,7 @@ export default class TeamContainer extends Component {
    }
 
   fetchData(id) {
-     client({method: 'GET', path: 'http://localhost:8080/data/team/'+id}).then(response => {
+     client({method: 'GET', path: window.location.protocol+'//'+window.location.hostname+':8080/data/team/'+id}).then(response => {
            this.setState({team: response.entity});
          });
    }

@@ -9,7 +9,7 @@ export default class PlayerContainer extends Component {
      }
 
     fetchData() {
-       client({method: 'GET', path: 'http://localhost:8080/data/player/' + this.props.player.player_id}).then(response => {
+       client({method: 'GET', path: window.location.protocol+'//'+window.location.hostname+':8080/data/player/' + this.props.player.player_id}).then(response => {
              this.setState({player: response.entity});
            });
      }

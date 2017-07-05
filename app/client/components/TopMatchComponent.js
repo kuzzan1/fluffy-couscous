@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import css from '../styles/root.css';
-import responsive from '../styles/responsive.css';
 
 export default class TopMatchComponent extends Component {
     render() {
@@ -10,7 +8,7 @@ export default class TopMatchComponent extends Component {
               <img src={this.props.fixture.localTeam.logo_path} />
             </div>
             <div className="scores text-center">
-              {this.props.fixture.scores.ft_score}              
+              {this.props.fixture.scores.ft_score}
             </div>
             <div className="img-holder right">
               <img src={this.props.fixture.visitorTeam.logo_path} />

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import client from '../api/client';
 
-import css from '../styles/root.css';
-import responsive from '../styles/responsive.css';
 import LeagueComponent from '../components/LeaguesComponent';
 import SockJS from 'sockjs-client'
 import Stomp from 'stompjs'
@@ -14,7 +12,7 @@ export default class LeagueContainer extends Component {
 		this.state = {leagues: [], date: date};
      }
      fetchData(date) {
-       client({method: 'GET', path: 'http://localhost:8080/data/fixtures/'+date}).then(response => {
+       client({method: 'GET', path: window.location.protocol+'//'+window.location.hostname+':8080/data/fixtures/'+date}).then(response => {
              this.setState({leagues: response.entity});
            });
 
@@ -24,7 +22,7 @@ export default class LeagueContainer extends Component {
      }
 
     connect() {
-       var sock = new SockJS('http://localhost:8080/gs-guide-websocket');
+       var sock = new SockJS(window.location.protocol+'//'+window.location.hostname+':8080/gs-guide-websocket');
        var client = Stomp.over(sock);
        client.connect({}, function(frame) {
          console.log('Connected: ' + frame);

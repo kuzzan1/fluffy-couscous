@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import client from '../api/client';
 import TopMatchComponent from '../components/TopMatchComponent'
-import css from '../styles/root.css';
-import responsive from '../styles/responsive.css';
 
 
 export default class TopMatchContainer extends Component {
@@ -12,7 +10,7 @@ export default class TopMatchContainer extends Component {
    }
 
   fetchData() {
-     client({method: 'GET', path: 'http://localhost:8080/data/fixture/topMatch'}).then(response => {
+     client({method: 'GET', path: window.location.protocol+'//'+window.location.hostname+':8080/data/fixture/topMatch'}).then(response => {
            this.setState({fixtures: response.entity});
          });
    }

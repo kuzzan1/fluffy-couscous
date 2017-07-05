@@ -27,7 +27,7 @@ public class Scheduler {
     private CacheManager cacheManager;
 
 
-    @Scheduled(fixedRate = 10000 )
+    @Scheduled(fixedRate = 360000 )
     public void getTodaysFixtures() {
         String date = LocalDate.now().format( DateTimeFormatter.ofPattern( "yyyy-MM-dd"));
         List<League> fixtures = dataInterface.getMatchesForToday( date );

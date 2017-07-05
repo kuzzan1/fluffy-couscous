@@ -11,7 +11,7 @@ export default class StandingsContainer extends Component {
    }
 
   fetchData() {
-     client({method: 'GET', path: 'http://localhost:8080/data/standings/' + this.state.seasonId}).then(response => {
+     client({method: 'GET', path: window.location.protocol+'//'+window.location.hostname+':8080/data/standings/' + this.state.seasonId}).then(response => {
            this.setState({standings: response.entity});
          });
    }

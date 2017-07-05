@@ -20,10 +20,9 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.(js|jsx)$/i, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.scss$/, use: ExtractTextPlugin.extract({use: 'sass-loader'}) },
-      { test: /\.css$/, use: ['style-loader', 'css-loader']},
+      { test: /\.less$/, use: [{ loader: "style-loader" }, { loader: "css-loader"}, { loader: "less-loader" }]},
+      //{ test: /\.css$/, use: ['style-loader', 'css-loader']},
       { test: /\.(jpe?g|png|gif|svg)$/i,loaders:['url-loader?limit=10000',  'img-loader']}
-
     ]
     },
     node: {

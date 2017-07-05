@@ -10,10 +10,9 @@ import LeagueContainer from './containers/LeagueContainer'
 import TeamContainer from './containers/TeamContainer'
 import TopMatchContainer from './containers/TopMatchContainer'
 import StandingsContainer from './containers/StandingsContainer'
-import TestSocket from './containers/TestSocket'
-
-import css from './styles/root.css';
-import responsive from './styles/responsive.css';
+import FooterComponent from './components/FooterComponent'
+import InfoComponent from './components/InfoComponent'
+import styles from './styles/main.less'
 
 ReactDOM.render((
   <BrowserRouter>
@@ -46,6 +45,8 @@ ReactDOM.render((
             </div>
           </div>
         </div>
+        <FooterComponent />
+        <InfoComponent />
       </div>
     </BrowserRouter>
 ), document.getElementById('root'));

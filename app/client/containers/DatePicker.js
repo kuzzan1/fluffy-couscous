@@ -27,8 +27,7 @@ export default class DatePicker extends React.Component {
   			}
   		}
   	});
-
-    }
+  }
   render() {
     var dates = []
     var date = new Date();

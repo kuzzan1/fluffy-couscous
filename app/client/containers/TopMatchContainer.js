@@ -17,7 +17,13 @@ export default class TopMatchContainer extends Component {
 
   componentDidMount() {
       this.fetchData();
-    }
+      var matchResultsSwiper = new Swiper('.match-results .panel-body', {
+      direction: 'horizontal',
+      spaceBetween: 15,
+      autoplay: 2000,
+      loop: true
+  });
+}
 
 
   render() {
@@ -28,7 +34,7 @@ export default class TopMatchContainer extends Component {
       return (
         <div className="panel match-results">
           <div className="panel-heading">
-            <div className="panel-title">Today's Top Games</div>
+            <div className="panel-title">Todays Top Games</div>
           </div>
           <div className="date">21 <span>Jun</span></div>
           <div className="panel-body swiper-container-horizontal">

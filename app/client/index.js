@@ -13,7 +13,7 @@ import StandingsContainer from './containers/StandingsContainer'
 import FooterComponent from './components/FooterComponent'
 import InfoComponent from './components/InfoComponent'
 import styles from './styles/main.less'
-
+import root from './styles/root.less'
 ReactDOM.render((
   <BrowserRouter>
     <div id="wrapper">
